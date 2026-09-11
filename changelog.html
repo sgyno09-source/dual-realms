@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dual Realms — 2.3 Dev Log</title>
+  <style>
+    :root {
+      --bg: #0f1218;
+      --card: #1a2030;
+      --text: #e8ecf4;
+      --muted: #9aa3b5;
+      --accent: #7dd3fc;
+      --border: #2a3348;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px 18px 64px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 14px;
+      font-size: 0.95rem;
+    }
+    .nav a:hover { text-decoration: underline; }
+    .lang-toggle {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--card);
+    }
+    .lang-toggle button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 14px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .lang-toggle button.active {
+      background: #243048;
+      color: var(--text);
+      font-weight: 600;
+    }
+    h1 { font-size: 1.55rem; margin: 0 0 12px; line-height: 1.3; }
+    h2 {
+      font-size: 1.1rem;
+      margin: 28px 0 10px;
+      color: var(--accent);
+    }
+    p, li { color: var(--text); }
+    .lede { color: var(--muted); margin-top: 0; }
+    ul { padding-left: 1.2em; margin: 8px 0; }
+    li { margin: 6px 0; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-top: 12px;
+    }
+    footer {
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    [data-lang] { display: none; }
+    html[lang="zh-CN"] [data-lang="zh"],
+    html[lang="en"] [data-lang="en"] { display: block; }
+    html[lang="zh-CN"] li[data-lang="zh"],
+    html[lang="en"] li[data-lang="en"] { display: list-item; }
+    html[lang="zh-CN"] span[data-lang="zh"],
+    html[lang="en"] span[data-lang="en"] { display: inline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <nav class="nav">
+        <a href="index.html"><span data-lang="zh">开始游戏</span><span data-lang="en">Play</span></a>
+        <a href="https://github.com/sgyno09-source/dual-realms"><span data-lang="zh">仓库</span><span data-lang="en">Repo</span></a>
+        <a href="https://github.com/sgyno09-source/dual-realms/issues">Issues</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="btn-zh" aria-pressed="true">中文</button>
+        <button type="button" id="btn-en" aria-pressed="false">English</button>
+      </div>
+    </header>
+
+    <h1>
+      <span data-lang="zh">2.3 开发日志｜两关试玩，持续开发中</span>
+      <span data-lang="en">2.3 Dev Log | Two-stage trial, in active development</span>
+    </h1>
+
+    <p class="lede" data-lang="zh">目前开放「旧城区·放学路」与「云岚秘境」两个章节。接下来会优先处理操作、战斗平衡和稳定性，再扩展关卡。</p>
+    <p class="lede" data-lang="en">Two chapters are open now: Old Town · After-School Road and Cloudmist Realm. Next priorities are controls, combat balance, and stability, then more stages.</p>
+
+    <h2 data-lang="zh">本次更新</h2>
+    <h2 data-lang="en">This update</h2>
+    <div class="card">
+      <ul>
+        <li data-lang="zh"><strong>双女主切换：</strong>两关均可切换角色，分别使用丝袜丝带与拳术战斗。</li>
+        <li data-lang="en"><strong>Dual heroines:</strong> Switch characters in both stages — ribbon/stocking control vs close-range fists.</li>
+        <li data-lang="zh"><strong>商店与背包：</strong>增加独立按钮，支持储存药水、穿戴和卸下装备。</li>
+        <li data-lang="en"><strong>Shop & inventory:</strong> Dedicated buttons to store potions and equip / unequip gear.</li>
+        <li data-lang="zh"><strong>随机宝箱：</strong>两关加入金币与药水宝箱，开启状态随检查点存档保存。</li>
+        <li data-lang="en"><strong>Random chests:</strong> Coin and potion chests in both stages; open state saves with checkpoints.</li>
+        <li data-lang="zh"><strong>限时坐骑：</strong>香蕉猫不再跟随。每次手动召唤消耗 500 金币，持续 15 秒；到期离场，不会自动续召。</li>
+        <li data-lang="en"><strong>Timed mount:</strong> Banana Cat no longer follows automatically. Manual summon costs 500 coins for 15 seconds; it leaves when time is up and does not auto-renew.</li>
+        <li data-lang="zh"><strong>临时助战：</strong>第二关红衣师姐间歇出场，协助约 10 秒后离开。</li>
+        <li data-lang="en"><strong>Temporary ally:</strong> In stage 2, the red-clad senior sister appears intermittently and helps for about 10 seconds.</li>
+        <li data-lang="zh"><strong>移动问题修复：</strong>补充触控松开、手势取消时的输入清理，调整骑乘加速逻辑，处理人物持续往前冲的问题。</li>
+        <li data-lang="en"><strong>Movement fixes:</strong> Cleaner touch-release / gesture-cancel handling, mount acceleration tweaks, and a fix for characters sliding forward.</li>
+        <li data-lang="zh"><strong>中英文界面：</strong>同步更新新增功能的说明。</li>
+        <li data-lang="en"><strong>UI copy:</strong> Chinese and English labels updated for the new features.</li>
+      </ul>
+    </div>
+
+    <h2 data-lang="zh">当前验证情况</h2>
+    <h2 data-lang="en">Current validation</h2>
+    <p data-lang="zh">两关模拟通关，以及部分触控、背包、宝箱、坐骑计时和存档逻辑测试已通过。</p>
+    <p data-lang="en">Simulated clears of both stages, plus spot checks for touch input, inventory, chests, mount timing, and save logic, have passed.</p>
+    <p data-lang="zh">这些测试不代表所有设备都没有问题。真实手机、不同浏览器与长时间游玩的表现，仍需继续验证。</p>
+    <p data-lang="en">That does not mean every device is bug-free. Real phones, other browsers, and long sessions still need more testing.</p>
+
+    <h2 data-lang="zh">试玩注意事项</h2>
+    <h2 data-lang="en">Trial notes</h2>
+    <div class="card">
+      <ul>
+        <li data-lang="zh">这是开发中的试玩版，并非最终版本，可能出现卡顿、按钮错位、碰撞或存档异常。</li>
+        <li data-lang="en">This is an in-development trial, not the final build. Expect stuttering, misaligned buttons, collision quirks, or save oddities.</li>
+        <li data-lang="zh">手机推荐横屏操作；进入游戏后点击开始以启用声音。</li>
+        <li data-lang="en">Landscape is recommended on phones. Tap Start after entering to enable audio.</li>
+        <li data-lang="zh">离开前使用游戏内的「存档返回」。继续游戏时回到最近检查点。</li>
+        <li data-lang="en">Use in-game “Save & Return” before leaving. Continue restores the nearest checkpoint.</li>
+        <li data-lang="zh">存档保存在当前浏览器，不是云存档。更换设备、浏览器、网站地址或清除网站数据，不会自动迁移进度。</li>
+        <li data-lang="en">Saves live in the current browser — not the cloud. Changing device, browser, site URL, or clearing site data will not migrate progress.</li>
+        <li data-lang="zh">GitHub 仓库用于提供代码和下载文件；在线试玩需要另行部署，例如 GitHub Pages。</li>
+        <li data-lang="en">The GitHub repo hosts code and downloads; online play needs a separate deploy such as GitHub Pages.</li>
+        <li data-lang="zh">当前静态上传包不包含社区排行榜后端，仅上传到 GitHub 或部署静态页面，不会自动启用在线排行榜。</li>
+        <li data-lang="en">This static package has no community leaderboard backend. Uploading to GitHub or hosting a static page will not enable online rankings by itself.</li>
+        <li data-lang="zh">后续版本可能调整伤害、金币、装备与关卡内容，会尽量保留旧存档兼容性。</li>
+        <li data-lang="en">Later builds may tune damage, coins, gear, and stages; we will try to keep old saves compatible.</li>
+      </ul>
+    </div>
+
+    <h2 data-lang="zh">Bug 反馈</h2>
+    <h2 data-lang="en">Bug reports</h2>
+    <p data-lang="zh">欢迎通过本仓库的 <a href="https://github.com/sgyno09-source/dual-realms/issues">Issues</a> 提交问题，请尽量提供：</p>
+    <p data-lang="en">Please file issues via this repo’s <a href="https://github.com/sgyno09-source/dual-realms/issues">Issues</a>. Include when you can:</p>
+    <ul>
+      <li data-lang="zh">游戏版本、设备型号、浏览器名称。</li>
+      <li data-lang="en">Game version, device model, browser name.</li>
+      <li data-lang="zh">所在关卡、使用角色。</li>
+      <li data-lang="en">Stage and character in use.</li>
+      <li data-lang="zh">出问题前的操作，以及能否重复触发。</li>
+      <li data-lang="en">Steps before the bug, and whether it reproduces.</li>
+      <li data-lang="zh">截图或录屏。</li>
+      <li data-lang="en">Screenshot or screen recording.</li>
+    </ul>
+    <p data-lang="zh">游戏还在开发，欢迎试玩，也欢迎指出哪里不好玩、哪里不好操作。</p>
+    <p data-lang="en">The game is still in development — thanks for playing, and for pointing out what feels unfair or awkward to control.</p>
+
+    <footer>
+      <span data-lang="zh">旧城区·放学路 / Dual Realms · 版本 2.3 试玩</span>
+      <span data-lang="en">Old Town · After-School Road / Dual Realms · v2.3 trial</span>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var KEY = "dual-realms-changelog-lang";
+      var root = document.documentElement;
+      var btnZh = document.getElementById("btn-zh");
+      var btnEn = document.getElementById("btn-en");
+
+      function apply(lang) {
+        var isZh = lang !== "en";
+        root.lang = isZh ? "zh-CN" : "en";
+        btnZh.classList.toggle("active", isZh);
+        btnEn.classList.toggle("active", !isZh);
+        btnZh.setAttribute("aria-pressed", isZh ? "true" : "false");
+        btnEn.setAttribute("aria-pressed", isZh ? "false" : "true");
+        try { localStorage.setItem(KEY, isZh ? "zh" : "en"); } catch (e) {}
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      apply(saved === "en" ? "en" : "zh");
+
+      btnZh.addEventListener("click", function () { apply("zh"); });
+      btnEn.addEventListener("click", function () { apply("en"); });
+    })();
+  </script>
+</body>
+</html>
