@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dual Realms — 2.3 Dev Log</title>
+  <title>Dual Realms — 2.3–2.6 Dev Log</title>
   <style>
     :root {
       --bg: #0f1218;
@@ -65,9 +65,14 @@
     }
     h1 { font-size: 1.55rem; margin: 0 0 12px; line-height: 1.3; }
     h2 {
-      font-size: 1.1rem;
-      margin: 28px 0 10px;
+      font-size: 1.15rem;
+      margin: 32px 0 10px;
       color: var(--accent);
+    }
+    h3 {
+      font-size: 1.02rem;
+      margin: 18px 0 8px;
+      color: var(--text);
     }
     p, li { color: var(--text); }
     .lede { color: var(--muted); margin-top: 0; }
@@ -78,7 +83,7 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px 18px;
-      margin-top: 12px;
+      margin-top: 10px;
     }
     footer {
       margin-top: 36px;
@@ -111,82 +116,115 @@
     </header>
 
     <h1>
-      <span data-lang="zh">2.3 开发日志｜两关试玩，持续开发中</span>
-      <span data-lang="en">2.3 Dev Log | Two-stage trial, in active development</span>
+      <span data-lang="zh">2.3—2.6 开发日志</span>
+      <span data-lang="en">2.3–2.6 Dev Log</span>
     </h1>
 
-    <p class="lede" data-lang="zh">目前开放「旧城区·放学路」与「云岚秘境」两个章节。接下来会优先处理操作、战斗平衡和稳定性，再扩展关卡。</p>
-    <p class="lede" data-lang="en">Two chapters are open now: Old Town · After-School Road and Cloudmist Realm. Next priorities are controls, combat balance, and stability, then more stages.</p>
+    <p class="lede" data-lang="zh">游戏目前开放「旧城区·放学路」和「云岚秘境」两个章节，仍在开发中。这几个版本主要围绕操作问题、角色一致性、设备适配和助战体验进行调整。</p>
+    <p class="lede" data-lang="en">Two chapters are open: Old Town · After-School Road and Cloudmist Realm. The game is still in development. Versions 2.3–2.6 focus on controls, character consistency, device layout, and ally support.</p>
 
-    <h2 data-lang="zh">本次更新</h2>
-    <h2 data-lang="en">This update</h2>
+    <h2 data-lang="zh">2.3｜移动问题修复与限时助战</h2>
+    <h2 data-lang="en">2.3 | Movement fixes &amp; timed allies</h2>
     <div class="card">
+      <p data-lang="zh">针对松手后人物仍往前冲的问题，补充了触控释放和手势取消处理，并调整骑乘加速逻辑。</p>
+      <p data-lang="en">Fixed characters sliding forward after releasing input by cleaning up touch-release / gesture-cancel handling, and tuned mount acceleration.</p>
       <ul>
-        <li data-lang="zh"><strong>双女主切换：</strong>两关均可切换角色，分别使用丝袜丝带与拳术战斗。</li>
-        <li data-lang="en"><strong>Dual heroines:</strong> Switch characters in both stages — ribbon/stocking control vs close-range fists.</li>
-        <li data-lang="zh"><strong>商店与背包：</strong>增加独立按钮，支持储存药水、穿戴和卸下装备。</li>
-        <li data-lang="en"><strong>Shop & inventory:</strong> Dedicated buttons to store potions and equip / unequip gear.</li>
-        <li data-lang="zh"><strong>随机宝箱：</strong>两关加入金币与药水宝箱，开启状态随检查点存档保存。</li>
-        <li data-lang="en"><strong>Random chests:</strong> Coin and potion chests in both stages; open state saves with checkpoints.</li>
-        <li data-lang="zh"><strong>限时坐骑：</strong>香蕉猫不再跟随。每次手动召唤消耗 500 金币，持续 15 秒；到期离场，不会自动续召。</li>
-        <li data-lang="en"><strong>Timed mount:</strong> Banana Cat no longer follows automatically. Manual summon costs 500 coins for 15 seconds; it leaves when time is up and does not auto-renew.</li>
-        <li data-lang="zh"><strong>临时助战：</strong>第二关红衣师姐间歇出场，协助约 10 秒后离开。</li>
-        <li data-lang="en"><strong>Temporary ally:</strong> In stage 2, the red-clad senior sister appears intermittently and helps for about 10 seconds.</li>
-        <li data-lang="zh"><strong>移动问题修复：</strong>补充触控松开、手势取消时的输入清理，调整骑乘加速逻辑，处理人物持续往前冲的问题。</li>
-        <li data-lang="en"><strong>Movement fixes:</strong> Cleaner touch-release / gesture-cancel handling, mount acceleration tweaks, and a fix for characters sliding forward.</li>
-        <li data-lang="zh"><strong>中英文界面：</strong>同步更新新增功能的说明。</li>
-        <li data-lang="en"><strong>UI copy:</strong> Chinese and English labels updated for the new features.</li>
+        <li data-lang="zh">第二关平时只显示当前女主，保留角色切换。</li>
+        <li data-lang="en">Stage 2 normally shows only the active heroine; character switching remains.</li>
+        <li data-lang="zh">红衣师姐改为间歇出场，协助约 10 秒后离场，出场期间提供护盾保护。</li>
+        <li data-lang="en">The red-clad senior sister appears intermittently, helps for about 10 seconds, then leaves; she grants a shield while present.</li>
+        <li data-lang="zh">香蕉猫取消跟随，改为手动召唤。</li>
+        <li data-lang="en">Banana Cat no longer follows automatically; summon is manual.</li>
+        <li data-lang="zh">当时每次召唤消耗 500 金币，持续 15 秒；到期不会自动续召。</li>
+        <li data-lang="en">At the time, each summon cost 500 coins for 15 seconds and did not auto-renew.</li>
+        <li data-lang="zh">召唤期间重复点击，不会重复扣费或延长时间。</li>
+        <li data-lang="en">Pressing summon again during an active ride does not charge again or extend the timer.</li>
       </ul>
     </div>
 
-    <h2 data-lang="zh">当前验证情况</h2>
-    <h2 data-lang="en">Current validation</h2>
-    <p data-lang="zh">两关模拟通关，以及部分触控、背包、宝箱、坐骑计时和存档逻辑测试已通过。</p>
-    <p data-lang="en">Simulated clears of both stages, plus spot checks for touch input, inventory, chests, mount timing, and save logic, have passed.</p>
-    <p data-lang="zh">这些测试不代表所有设备都没有问题。真实手机、不同浏览器与长时间游玩的表现，仍需继续验证。</p>
-    <p data-lang="en">That does not mean every device is bug-free. Real phones, other browsers, and long sessions still need more testing.</p>
-
-    <h2 data-lang="zh">试玩注意事项</h2>
-    <h2 data-lang="en">Trial notes</h2>
+    <h2 data-lang="zh">2.4｜统一角色模型，降低坐骑费用</h2>
+    <h2 data-lang="en">2.4 | Unified heroine models &amp; cheaper mount</h2>
     <div class="card">
+      <p data-lang="zh">修复同一位女主在两关中外观不一致的问题。</p>
+      <p data-lang="en">Fixed the same heroine looking different across the two stages.</p>
       <ul>
-        <li data-lang="zh">这是开发中的试玩版，并非最终版本，可能出现卡顿、按钮错位、碰撞或存档异常。</li>
-        <li data-lang="en">This is an in-development trial, not the final build. Expect stuttering, misaligned buttons, collision quirks, or save oddities.</li>
-        <li data-lang="zh">手机推荐横屏操作；进入游戏后点击开始以启用声音。</li>
-        <li data-lang="en">Landscape is recommended on phones. Tap Start after entering to enable audio.</li>
-        <li data-lang="zh">离开前使用游戏内的「存档返回」。继续游戏时回到最近检查点。</li>
-        <li data-lang="en">Use in-game “Save & Return” before leaving. Continue restores the nearest checkpoint.</li>
-        <li data-lang="zh">存档保存在当前浏览器，不是云存档。更换设备、浏览器、网站地址或清除网站数据，不会自动迁移进度。</li>
-        <li data-lang="en">Saves live in the current browser — not the cloud. Changing device, browser, site URL, or clearing site data will not migrate progress.</li>
-        <li data-lang="zh">GitHub 仓库用于提供代码和下载文件；在线试玩需要另行部署，例如 GitHub Pages。</li>
-        <li data-lang="en">The GitHub repo hosts code and downloads; online play needs a separate deploy such as GitHub Pages.</li>
-        <li data-lang="zh">当前静态上传包不包含社区排行榜后端，仅上传到 GitHub 或部署静态页面，不会自动启用在线排行榜。</li>
-        <li data-lang="en">This static package has no community leaderboard backend. Uploading to GitHub or hosting a static page will not enable online rankings by itself.</li>
-        <li data-lang="zh">后续版本可能调整伤害、金币、装备与关卡内容，会尽量保留旧存档兼容性。</li>
-        <li data-lang="en">Later builds may tune damage, coins, gear, and stages; we will try to keep old saves compatible.</li>
+        <li data-lang="zh">两关共用同一套女主模型和动画。</li>
+        <li data-lang="en">Both stages share one set of heroine models and animations.</li>
+        <li data-lang="zh">统一角色比例、骑乘位置与攻击残影。</li>
+        <li data-lang="en">Aligned character scale, mount seating, and attack afterimages.</li>
+        <li data-lang="zh">香蕉猫召唤费用由 500 金币降为 100 金币。</li>
+        <li data-lang="en">Banana Cat summon cost dropped from 500 to 100 coins.</li>
+        <li data-lang="zh">持续时间仍为 15 秒，到期后需要手动再次召唤。</li>
+        <li data-lang="en">Duration stays 15 seconds; summon again manually when it ends.</li>
+      </ul>
+      <p data-lang="zh">两位女主继续保留各自的外观和战斗方式：丝袜丝带偏控制，拳术偏近身连击。</p>
+      <p data-lang="en">Both heroines keep distinct looks and combat styles: ribbon/stocking leans control; fists lean close-range combos.</p>
+    </div>
+
+    <h2 data-lang="zh">2.5｜横竖屏布局与按钮图标</h2>
+    <h2 data-lang="en">2.5 | Portrait/landscape layout &amp; button icons</h2>
+    <div class="card">
+      <p data-lang="zh">调整手机和电脑端界面，让常用操作更容易找到。</p>
+      <p data-lang="en">Tweaked phone and desktop UI so common actions are easier to find.</p>
+      <ul>
+        <li data-lang="zh">手机竖屏使用下方操作区，横屏使用左右操作区。</li>
+        <li data-lang="en">Phone portrait uses a bottom control pad; landscape uses left/right pads.</li>
+        <li data-lang="zh">为较矮的横屏增加紧凑按键布局。</li>
+        <li data-lang="en">Added a compact control layout for short landscape screens.</li>
+        <li data-lang="zh">调整按钮大小、间距与屏幕安全区。</li>
+        <li data-lang="en">Adjusted button size, spacing, and safe areas.</li>
+        <li data-lang="zh">改善竖屏下的人物显示大小。</li>
+        <li data-lang="en">Improved character on-screen size in portrait.</li>
+        <li data-lang="zh">所有界面按钮加入 图标＋文字，包括攻击、技能、商店、背包、商品、存档和排行榜。</li>
+        <li data-lang="en">All UI buttons now use icon + label, including attacks, skills, shop, inventory, items, save, and leaderboard.</li>
+        <li data-lang="zh">图标支持离线显示，中英文切换及冷却文字更新不会覆盖图标。</li>
+        <li data-lang="en">Icons work offline; language switches and cooldown text updates no longer overwrite icons.</li>
+        <li data-lang="zh">增加电脑端键盘焦点提示，调整窄窗口布局。</li>
+        <li data-lang="en">Added desktop keyboard-focus hints and tuned narrow-window layout.</li>
       </ul>
     </div>
 
-    <h2 data-lang="zh">Bug 反馈</h2>
-    <h2 data-lang="en">Bug reports</h2>
-    <p data-lang="zh">欢迎通过本仓库的 <a href="https://github.com/sgyno09-source/dual-realms/issues">Issues</a> 提交问题，请尽量提供：</p>
-    <p data-lang="en">Please file issues via this repo’s <a href="https://github.com/sgyno09-source/dual-realms/issues">Issues</a>. Include when you can:</p>
-    <ul>
-      <li data-lang="zh">游戏版本、设备型号、浏览器名称。</li>
-      <li data-lang="en">Game version, device model, browser name.</li>
-      <li data-lang="zh">所在关卡、使用角色。</li>
-      <li data-lang="en">Stage and character in use.</li>
-      <li data-lang="zh">出问题前的操作，以及能否重复触发。</li>
-      <li data-lang="en">Steps before the bug, and whether it reproduces.</li>
-      <li data-lang="zh">截图或录屏。</li>
-      <li data-lang="en">Screenshot or screen recording.</li>
-    </ul>
-    <p data-lang="zh">游戏还在开发，欢迎试玩，也欢迎指出哪里不好玩、哪里不好操作。</p>
-    <p data-lang="en">The game is still in development — thanks for playing, and for pointing out what feels unfair or awkward to control.</p>
+    <h2 data-lang="zh">2.6｜红衣师姐主动打怪</h2>
+    <h2 data-lang="en">2.6 | Senior sister actively fights</h2>
+    <div class="card">
+      <p data-lang="zh">在原有护盾支援基础上，加入主动攻击能力。</p>
+      <p data-lang="en">On top of shield support, she can now attack enemies.</p>
+      <ul>
+        <li data-lang="zh">红衣师姐出场后会寻找附近敌人，靠近并挥剑。</li>
+        <li data-lang="en">During a visit she seeks nearby enemies, closes in, and swings her sword.</li>
+        <li data-lang="zh">剑击具有攻击前摇、间隔和命中反馈。</li>
+        <li data-lang="en">Sword swings have wind-up, interval, and hit feedback.</li>
+        <li data-lang="zh">能够击杀普通怪物。</li>
+        <li data-lang="en">She can defeat ordinary enemies.</li>
+        <li data-lang="zh">可以削减 BOSS 生命，但至少保留 1 点生命，由玩家完成最后一击。</li>
+        <li data-lang="en">She can chip boss HP but leaves at least 1 HP so the player lands the final blow.</li>
+        <li data-lang="zh">助战仍持续约 10 秒，离场后停止攻击，也不再提供护盾。</li>
+        <li data-lang="en">Support still lasts about 10 seconds; after leaving she stops attacking and no longer shields.</li>
+        <li data-lang="zh">保留间歇出场机制，不会全程跟随主角。</li>
+        <li data-lang="en">Intermittent visits remain — she does not follow the player for the whole stage.</li>
+      </ul>
+    </div>
+
+    <h2 data-lang="zh">试玩与反馈</h2>
+    <h2 data-lang="en">Trial notes &amp; feedback</h2>
+    <div class="card">
+      <ul>
+        <li data-lang="zh">这是开发中的试玩版，可能出现卡顿、布局或存档异常。</li>
+        <li data-lang="en">This is an in-development trial — expect stuttering, layout quirks, or save oddities.</li>
+        <li data-lang="zh">手机推荐横屏；进入游戏后点击开始以启用声音。</li>
+        <li data-lang="en">Landscape is recommended on phones; tap Start to enable audio.</li>
+        <li data-lang="zh">存档保存在当前浏览器，不是云存档。</li>
+        <li data-lang="en">Saves are browser-local, not cloud.</li>
+        <li data-lang="zh">静态页不包含社区排行榜后端。</li>
+        <li data-lang="en">This static build has no community leaderboard backend.</li>
+      </ul>
+      <p data-lang="zh">欢迎通过 <a href="https://github.com/sgyno09-source/dual-realms/issues">Issues</a> 反馈：版本、设备、浏览器、关卡、角色、复现步骤与截图。</p>
+      <p data-lang="en">Please report via <a href="https://github.com/sgyno09-source/dual-realms/issues">Issues</a>: version, device, browser, stage, character, repro steps, and screenshots.</p>
+    </div>
 
     <footer>
-      <span data-lang="zh">旧城区·放学路 / Dual Realms · 版本 2.3 试玩</span>
-      <span data-lang="en">Old Town · After-School Road / Dual Realms · v2.3 trial</span>
+      <span data-lang="zh">旧城区·放学路 / Dual Realms · 当前试玩 2.6</span>
+      <span data-lang="en">Old Town · After-School Road / Dual Realms · current trial 2.6</span>
     </footer>
   </div>
   <script>
@@ -195,7 +233,6 @@
       var root = document.documentElement;
       var btnZh = document.getElementById("btn-zh");
       var btnEn = document.getElementById("btn-en");
-
       function apply(lang) {
         var isZh = lang !== "en";
         root.lang = isZh ? "zh-CN" : "en";
@@ -205,11 +242,9 @@
         btnEn.setAttribute("aria-pressed", isZh ? "false" : "true");
         try { localStorage.setItem(KEY, isZh ? "zh" : "en"); } catch (e) {}
       }
-
       var saved = null;
       try { saved = localStorage.getItem(KEY); } catch (e) {}
       apply(saved === "en" ? "en" : "zh");
-
       btnZh.addEventListener("click", function () { apply("zh"); });
       btnEn.addEventListener("click", function () { apply("en"); });
     })();

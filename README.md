@@ -1,6 +1,6 @@
 # 旧城区·放学路 / Dual Realms
 
-HTML 浏览器双女主横版动作冒险试玩（2.3）。
+HTML 浏览器双女主横版动作冒险试玩（当前 **2.6**）。
 
 ## 画面预览
 
@@ -11,14 +11,14 @@ HTML 浏览器双女主横版动作冒险试玩（2.3）。
 ## 链接
 
 - **在线试玩：** https://sgyno09-source.github.io/dual-realms/
-- **开发日志（中/英切换）：** https://sgyno09-source.github.io/dual-realms/changelog.html
+- **开发日志 2.3—2.6（中/英切换）：** https://sgyno09-source.github.io/dual-realms/changelog.html
 - **Issues：** https://github.com/sgyno09-source/dual-realms/issues
 
 ---
 
 # Dual Realms / 旧城区·放学路
 
-HTML browser side-scrolling action-adventure trial (v2.3).
+HTML browser side-scrolling action-adventure trial (current **v2.6**).
 
 ## Screenshots
 
@@ -29,7 +29,7 @@ HTML browser side-scrolling action-adventure trial (v2.3).
 ## Links
 
 - **Play:** https://sgyno09-source.github.io/dual-realms/
-- **Dev log (ZH/EN toggle):** https://sgyno09-source.github.io/dual-realms/changelog.html
+- **Dev log 2.3–2.6 (ZH/EN toggle):** https://sgyno09-source.github.io/dual-realms/changelog.html
 - **Issues:** https://github.com/sgyno09-source/dual-realms/issues
 
 Two open chapters: Old Town · After-School Road and Cloudmist Realm. In development — saves are browser-local; no cloud leaderboard in this static build.
